@@ -1,12 +1,16 @@
-# movie_api
+# Meet Upp 
 
 - Deployed app link: https://spenutt.github.io/MeetUpp/
 
 ## Description
 
-Meet Again is a proof-of-concept progressive web app that lets you search for tech events in your city. At a glance you can see how many events are happening in a particular city and timeframe, the details of those events, and even what types of events are most common in an area.
+Meet Upp is a proof-of-concept progressive web app that lets you search for tech events in your city. At a glance you can see how many events are happening in a particular city and timeframe, the details of those events, and even what types of events are most common in an area.
 
 It's currently connected to a demo Google Calendar for demonstration purposes, so the events aren't up-to-date. But because it uses the Google Calendar API, in principle it could connect to a live events calendar.
+
+## Serverless
+
+Meet Upp incorporates serverless functions for efficiency, scalability, and accessibility. It is set up to run using tools from AWS LAMBDA and its security and authentication methods are provided by OAuth2 from Google. 
 
 ## Key features
 
@@ -17,21 +21,15 @@ It's currently connected to a demo Google Calendar for demonstration purposes, s
 ● Add an app shortcut to the home screen.
 ● View a chart showing the number of upcoming events by city.
 
-## Blueprint and techstack 
-
-To be updated 
-
 ### Frontend 
 
-To be updated 
+Written with Javascript/React, hosted on GitHub Pages. 
 
 ### Data and authentication 
 
-To be updated 
-
-### Testing
-
-To be updated 
+AWS LAMBDA and OAuth2 (Google)
+Server logic written with Node/Express
+Backend database is supported viy Google Calendar API. 
 
 ## User Stories and Scenarios
 ### FEATURE 1: FILTER EVENTS BY CITY
