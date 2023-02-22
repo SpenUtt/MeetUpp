@@ -1,6 +1,6 @@
 # movie_api
 
-- Deployed app link: https://zhikiki.github.io/meet-app/
+- Deployed app link: https://spenutt.github.io/MeetUpp/
 
 ## Description
 
@@ -16,6 +16,22 @@ It's currently connected to a demo Google Calendar for demonstration purposes, s
 ● Use the app when offline.
 ● Add an app shortcut to the home screen.
 ● View a chart showing the number of upcoming events by city.
+
+## Blueprint and techstack 
+
+To be updated 
+
+### Frontend 
+
+To be updated 
+
+### Data and authentication 
+
+To be updated 
+
+### Testing
+
+To be updated 
 
 ## User Stories and Scenarios
 ### FEATURE 1: FILTER EVENTS BY CITY
@@ -34,6 +50,7 @@ User Story: As a user, I should be able to filter events by city so that I can s
 •	Given: the user was typing “Berlin” in the city textbox and the list of suggested cities is showing
 •	When: the user selects a city (e.g., “Berlin, Germany”) from the list
 •	Then: their city should be changed to that city (i.e., “Berlin, Germany”) and the user should receive a list of upcoming events in that city 
+
 ### FEATURE 2: SHOW/HIDE AN EVENT’S DETAILS
 
 User Story: As a user, I should be able to show/hide an event's details so that I can easily scan through an overview of events. 
@@ -50,6 +67,7 @@ User Story: As a user, I should be able to show/hide an event's details so that 
 •	Given: A user has selected an event element to see its details 
 •	When: a user clicks on a button to hide the details 
 •	Then: the details are collapsed and the list of events is again visible 
+
 ### FEATURE 3: SPECIFY NUMBER OF EVENTS
 
 User story: As a user, I should be able to specify the number of events s othat I can see how many events are taking place. 
