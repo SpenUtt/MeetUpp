@@ -50,5 +50,5 @@ describe('<CitySearch /> component', () => {
             return location.toUpperCase().indexOf(query.toUpperCase()) > -1;
         });
         expect(CitySearchWrapper.state("suggestions")).toEqual(filteredLocations);
-      });
+    });
 });
