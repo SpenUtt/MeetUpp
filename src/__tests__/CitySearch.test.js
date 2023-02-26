@@ -4,14 +4,18 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import CitySearch from '../CitySearch';
 import { mockData } from '../mock-data';
-import { extractLocations } from './api';
+import { extractLocations } from '../api';
 
 describe('<CitySearch /> component', () => {
-    let CitySearchWrapper;
+    let locations, CitySearchWrapper;
     beforeAll(() => {
         locations = extractLocations(mockData);
         CitySearchWrapper = shallow(<CitySearch locations={locations}/>);
     });
+
+    test ('render text input', () => {
+        expect(CitySearchWrapper.find(".city")).toHaveLength(1);
+    });    
 
     test('renders a list of suggestions', () => {
         expect(CitySearchWrapper.find('.suggestions')).toHaveLength(1);
@@ -36,7 +40,7 @@ describe('<CitySearch /> component', () => {
         CitySearchWrapper.setState({ suggestions: locations });
         const suggestions = CitySearchWrapper.state('suggestions');
         expect(CitySearchWrapper.find('.suggestions li')).toHaveLength(suggestions.length + 1);
-        for (let i = 0; i < suggestions.length; i += 1) {
+        for (let i = 0; i < suggestions.length; i += 1) { // change to suggestions.forEach((suggestion, i) => { ?
             expect(CitySearchWrapper.find('.suggestions li').at(i).text()).toBe(suggestions[i]);
         }
     });
@@ -53,9 +57,10 @@ describe('<CitySearch /> component', () => {
     });
     test("selecting a suggestion should change query state", () => {
         CitySearchWrapper.setState({
-          query: 'Berlin'  });
+            query: 'Berlin'  
+        });
         const suggestions = CitySearchWrapper.state('suggestions');
         CitySearchWrapper.find('.suggestions li').at(0).simulate('click');
         expect(CitySearchWrapper.state("query")).toBe(suggestions[0]);
     });
-}); // should all the tests be wrapped? 
+}); 
