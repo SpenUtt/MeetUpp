@@ -55,7 +55,7 @@ const removeQuery = () => {
 const getToken = async (code) => {
     try {
         const encodeCode = encodeURIComponent(code);
-        const response = await fetch( 'YOUR_GET_ACCESS_TOKEN_ENDPOINT' + '/' + encodeCode); // where can I find this endpoint? 
+        const response = await fetch( 'https://3lerqb87je.execute-api.eu-central-1.amazonaws.com/dev/api/token' + '/' + encodeCode);  
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`)
         }
@@ -76,7 +76,7 @@ export const getEvents = async () => {
     const token = await getAccessToken();
     if (token) {
         removeQuery();
-        const url = 'YOUR_GET_EVENTS_API_ENDPOINT' + '/' + token; //where do i find this? 
+        const url = "https://3lerqb87je.execute-api.eu-central-1.amazonaws.com/dev/api/get-events" + "/" + token;  
         const result = await axios.get(url);
         if (result.data) {
             var locations = extractLocations(result.data.events);
@@ -97,7 +97,7 @@ export const getAccessToken = async () => {
             const code = await searchParams.get("code");
             if (!code) {
             const results = await axios.get(
-                "YOUR_SERVERLESS_GET_AUTH_URL_ENDPOINT /api/get-auth-url" //where do I find this? 
+                "https://3lerqb87je.execute-api.eu-central-1.amazonaws.com/dev/api/get-auth-url"  
             );
             const { authUrl } = results.data;
             return (window.location.href = authUrl);
