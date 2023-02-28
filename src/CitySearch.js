@@ -36,6 +36,7 @@ class CitySearch extends Component {
                     className="city"
                     value={this.state.query}
                     onChange={this.handleInputChanged}
+                    placeholder="Search for location..."
                     onFocus={() => { this.setState({ showSuggestions: true }) }}
                 />
                 <ul className="suggestions" style={this.state.showSuggestions ? {}: { display: 'none' }}>
@@ -45,7 +46,7 @@ class CitySearch extends Component {
                             onClick={() => this.handleItemClicked("all")}
                         >{suggestion}</li>
                     ))}
-                    <li key='all'>
+                    <li onClick={() => this.handleItemClicked("all")}>
                         <b>See all cities</b>
                     </li>
                 </ul>

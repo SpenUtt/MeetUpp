@@ -5,7 +5,7 @@ import NumberOfEvents from "../NumberOfEvents";
 describe("<NumberOfEvents /> component", () => {
     let NumberOfEventsWrapper;
     beforeAll(() => {
-        NumberOfEventsWrapper = shallow(<NumberOfEvents />);
+        NumberOfEventsWrapper = shallow(<NumberOfEvents updateNumberOfEvents={() => {}}/>);
     });
     
     test("renders the component", () => {
@@ -23,5 +23,10 @@ describe("<NumberOfEvents /> component", () => {
         target: { value: 12 },
         });
         expect(NumberOfEventsWrapper.state("num")).toBe(12);
+    });
+
+    test("the input should have the value given in the num prop", () => {
+        const NumberOfEventsWrapperWithProp = shallow(<NumberOfEvents num={20} updateNumberOfEvents={() => {}} />);
+        expect(NumberOfEventsWrapperWithProp.state("num")).toBe(20);
     });
 });
