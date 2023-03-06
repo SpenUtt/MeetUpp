@@ -33,7 +33,7 @@ defineFeature(feature, test => {
             AppWrapper.update();
             let NumberOfEventsWrapper = AppWrapper.find('NumberOfEvents');
             const eventObject = { target: { value: 2 } };
-            NumberOfEventsWrapper.find('.noe-input').simulate(
+            NumberOfEventsWrapper.find('.num').simulate(
                 'change',
                 eventObject
             );   
