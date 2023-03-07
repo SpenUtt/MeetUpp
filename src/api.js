@@ -39,19 +39,6 @@ const removeQuery = () => {
     }
 };
 
-/*const getToken = async (code) => {
-    const encodeCode = encodeURIComponent(code);
-    const { access_token } = await fetch(
-        'YOUR_GET_ACCESS_TOKEN_ENDPOINT' + '/' + encodeCode 
-    )
-    .then((res) => {
-        return res.json();
-    })
-    .catch((error) => error);
-    access_token && localStorage.setItem("access_token", access_token);
-    return access_token;
-};*/
-
 const getToken = async (code) => {
     try {
         const encodeCode = encodeURIComponent(code);
@@ -73,6 +60,14 @@ export const getEvents = async () => {
         NProgress.done();
         return mockData;
     }
+
+    //Returns cashed data when user is offline
+    if (!navigator.onLine) {
+        const data = localStorage.getItem("lastEvents");
+        NProgress.done();
+        return data?JSON.parse(data).events : [];
+    }
+
     const token = await getAccessToken();
     if (token) {
         removeQuery();
