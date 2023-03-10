@@ -134,7 +134,7 @@ class App extends Component {
           />
           <NumberOfEvents
             num={this.state.numberOfEvents} 
-            updateNumberOfEvents={() => this.updateNumberOfEvents()}
+            updateNumberOfEvents={(num) => this.updateNumberOfEvents(num)}
           />
           <div className='data-vis-wrapper'>
             <h4>Events in each city</h4>
