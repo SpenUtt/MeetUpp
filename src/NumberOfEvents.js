@@ -7,6 +7,7 @@ class NumberOfEvents extends Component {
     changeNum = (value) => {
         this.setState({ num: value });
         console.log("function", this.props.updateNumberOfEvents);
+        console.log("value", value);
         this.props.updateNumberOfEvents(value);
         if (value < 1 || value > 32) {
             this.setState({ errorText: "Select number from 1 to 32" });
