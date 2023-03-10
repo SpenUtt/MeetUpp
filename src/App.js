@@ -53,7 +53,6 @@ class App extends Component {
   }; 
 
   updateNumberOfEvents(number) { 
-    console.log("number", number);
     this.setState({
       numberOfEvents: number,
     });
