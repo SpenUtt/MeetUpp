@@ -114,7 +114,7 @@ class App extends Component {
     );
   }old code from task 4.9*/
   render() {
-    const { locations, numberOfEvents, events } = this.state;
+    const { locations } = this.state;
     if (this.state.showWelcomeScreen === undefined) return <div
       className="App" />
 
@@ -133,7 +133,7 @@ class App extends Component {
           />
           <NumberOfEvents
             num={this.state.numberOfEvents} 
-            updateNumberOfEvents={(num) => this.updateNumberOfEvents(num)}
+            updateNumberOfEvents={() => this.updateNumberOfEvents}
           />
           <div className='data-vis-wrapper'>
             <h4>Events in each city</h4>
