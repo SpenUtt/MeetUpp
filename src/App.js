@@ -114,7 +114,7 @@ class App extends Component {
     );
   }old code from task 4.9*/
   render() {
-    const { locations } = this.state;
+    //const { locations } = this.state;
     if (this.state.showWelcomeScreen === undefined) return <div
       className="App" />
 
@@ -129,7 +129,7 @@ class App extends Component {
           <h4>Choose your nearest city</h4>
           <CitySearch 
             updateEvents={(loc) => this.updateCitySearch(loc)}  
-            locations={locations} 
+            locations={this.state.selectedLocation} 
           />
           <NumberOfEvents
             num={this.state.numberOfEvents} 

@@ -42,7 +42,7 @@ class CitySearch extends Component {
   
     render() {
         return (
-            <div className="CitySearch">
+            <div className="CitySearch input-wrapper">
                 <input
                     type="text"
                     className="city"
