@@ -73,8 +73,9 @@ class App extends Component {
       false : true;
     const searchParams = new URLSearchParams(window.location.search);
     const code = searchParams.get("code");
-    this.setState({ showWelcomeScreen: !(code || isTokenValid) });
-    if ((code || isTokenValid) && this.mounted) {
+    const isLocal = window.location.href.startsWith("http://localhost") ? true : (code || isTokenValid);
+    this.setState({ showWelcomeScreen: !(isLocal) });
+    if (isLocal && this.mounted) {
       getEvents().then((events) => {
         if (this.mounted) {
           this.setState({ events, locations: extractLocations(events) });
@@ -114,7 +115,7 @@ class App extends Component {
     );
   }old code from task 4.9*/
   render() {
-    //const { locations } = this.state;
+    const { locations } = this.state;
     if (this.state.showWelcomeScreen === undefined) return <div
       className="App" />
 
@@ -129,7 +130,7 @@ class App extends Component {
           <h4>Choose your nearest city</h4>
           <CitySearch 
             updateEvents={(loc) => this.updateCitySearch(loc)}  
-            locations={this.state.selectedLocation} 
+            locations={locations} 
           />
           <NumberOfEvents
             num={this.state.numberOfEvents} 
