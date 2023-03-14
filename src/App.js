@@ -6,9 +6,10 @@ import EventList from './EventList';
 import CitySearch from './CitySearch';
 import NumberOfEvents from "./NumberOfEvents";
 import { WarningAlert } from './Alert';
-//import { mockData } from './mock-data';
 import { getEvents, extractLocations, checkToken, getAccessToken } from './api';
 import WelcomeScreen from './WelcomeScreen';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import {
   ScatterChart, 
   Scatter, 
@@ -87,33 +88,21 @@ class App extends Component {
   componentWillUnmount(){
     this.mounted = false;
   }
+  
+  notify(msg) {
+    toast.error(msg, {
+      toastId: "msg",
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      });
+  }
 
-  /*render() { 
-    if (this.state.showWelcomeScreen === undefined) return <div
-      className="App" />
-
-    const offlineMessage = navigator.onLine
-      ? ''
-      : 'The app has no connection to the internet. The information displayed may not be up-to-date.';
-    return (
-      <div className="App">
-        <div className="filters">
-          <CitySearch   
-            locations={this.state.locations} 
-            updateEvents={(loc) => this.updateCitySearch(loc)} 
-          />
-          <NumberOfEvents 
-            num={this.state.numberOfEvents} 
-            updateNumberOfEvents={(num) => this.updateNumberOfEvents(num)}
-          />
-          <WarningAlert text={offlineMessage}></WarningAlert>
-        </div>
-        <EventList events={this.state.events} />
-        <WelcomeScreen showWelcomeScreen={this.state.showWelcomeScreen}
-          getAccessToken={() => { getAccessToken() }} />
-      </div>
-    );
-  }old code from task 4.9*/
   render() {
     const { locations } = this.state;
     if (this.state.showWelcomeScreen === undefined) return <div
@@ -125,16 +114,19 @@ class App extends Component {
     
     return (
       <div className="App">
+        <ToastContainer />
         <div className='filters'>
           <h1>Meet Upp</h1>
           <h4>Choose your nearest city</h4>
           <CitySearch 
             updateEvents={(loc) => this.updateCitySearch(loc)}  
-            locations={locations} 
+            locations={locations}
+            notify={this.notify}
           />
           <NumberOfEvents
             num={this.state.numberOfEvents} 
             updateNumberOfEvents={(num) => this.updateNumberOfEvents(num)}
+            notify={this.notify}
           />
           <div className='data-vis-wrapper'>
             <h4>Events in each city</h4>

@@ -1,7 +1,6 @@
 // src/CitySearch.js
 
 import React, { Component } from 'react';
-import { InfoAlert } from './Alert';
 
 class CitySearch extends Component {
     state = {
@@ -21,6 +20,10 @@ class CitySearch extends Component {
             query: value,
             infoText: 'We can not find the city you are looking for. Please try another city',
         });
+        if (this.state.infoText) {
+
+        }
+        this.props.notify("We can not find the city you are looking for. Please try another city");
         } else {
         return this.setState({
             query: value,
@@ -62,7 +65,6 @@ class CitySearch extends Component {
                         <b>See all cities</b>
                     </li>
                 </ul>
-                <InfoAlert text={this.state.infoText} />
             </div>
         );
     }
